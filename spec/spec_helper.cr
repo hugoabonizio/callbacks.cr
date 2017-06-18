@@ -15,6 +15,10 @@ class Before
   def with_typed_args(i : Int32, s : String)
     "#{i} #{s}"
   end
+
+  def change_state
+    @state = 111
+  end
 end
 
 class After

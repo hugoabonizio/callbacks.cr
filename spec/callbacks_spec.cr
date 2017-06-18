@@ -14,6 +14,10 @@ class Before
   before :with_typed_args, i : Int32, s : String do
     @state = 3
   end
+
+  before :change_state do
+    1 == 2 # false
+  end
 end
 
 class After
@@ -68,6 +72,12 @@ describe Callbacks do
       obj = Before.new
       obj.with_typed_args(666, "666")
       obj.state.should eq(3)
+    end
+
+    it "don't execute the method if the before callback returns false" do
+      obj = Before.new
+      obj.change_state
+      obj.state.should eq(0)
     end
   end
 

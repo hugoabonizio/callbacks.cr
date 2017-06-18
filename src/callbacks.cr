@@ -3,7 +3,7 @@ require "./callbacks/*"
 module Callbacks
   macro before(method, *args, &block)
     def {{ method.id }}({{ *args }})
-      {{ block.body }}
+      return nil if ({{ block.body }}) == false
       previous_def
     end
   end
