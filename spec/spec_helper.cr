@@ -35,6 +35,10 @@ class After
   def with_typed_args(i : Int32, s : String)
     "#{i} #{s}"
   end
+
+  def returns_value
+    666
+  end
 end
 
 class Around
@@ -50,5 +54,9 @@ class Around
 
   def with_typed_args(i : Int32, s : String)
     "#{i} #{s}"
+  end
+
+  def returns_value
+    6666
   end
 end

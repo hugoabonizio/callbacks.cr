@@ -10,16 +10,18 @@ module Callbacks
 
   macro after(method, *args, &block)
     def {{ method.id }}({{ *args }})
-      previous_def
+      %result = previous_def
       {{ block.body }}
+      %result
     end
   end
 
   macro around(method, *args, &block)
     def {{ method.id }}({{ *args }})
       {{ block.body }}
-      previous_def
+      %result = previous_def
       {{ block.body }}
+      %result
     end
   end
 end

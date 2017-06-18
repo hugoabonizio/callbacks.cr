@@ -34,6 +34,10 @@ class After
   after :with_typed_args, i : Int32, s : String do
     @state = 6
   end
+
+  after :returns_value do
+    1 + 1
+  end
 end
 
 class Around
@@ -99,9 +103,14 @@ describe Callbacks do
       obj.with_typed_args(666, "666")
       obj.state.should eq(6)
     end
+
+    it "keeps the original returned value" do
+      obj = After.new
+      obj.returns_value.should eq(666)
+    end
   end
 
-  context "#after" do
+  context "#around" do
     it "executes around a method without arguments" do
       obj = Around.new
       obj.without_args
@@ -118,6 +127,11 @@ describe Callbacks do
       obj = Around.new
       obj.with_typed_args(666, "666")
       obj.state.should eq(16)
+    end
+
+    it "keeps the original returned value" do
+      obj = Around.new
+      obj.returns_value.should eq(6666)
     end
   end
 end
