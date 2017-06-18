@@ -1,4 +1,4 @@
-# Callbacks
+# Callbacks [![Build Status](https://travis-ci.org/hugoabonizio/callbacks.cr.svg?branch=master)](https://travis-ci.org/hugoabonizio/callbacks.cr)
 
 **Callbacks** is a simple shard that lets you write callbacks to be run before, after or around a specific method.
 
