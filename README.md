@@ -55,9 +55,9 @@ end
 MyModel.new.calculate # => 123
 ```
 
-### Early stops
+### Cancel the execution
 
-If the before callback return false, the original method will not be called.
+If the before callback returns false, the original method will not be called. This prevent the method chain to continue (helpful to avoid saving a model if there are some errors).
 
 ```crystal
 class MyModel
